@@ -24,6 +24,7 @@ function* commentsDataRequested({id}) {
         const data = yield call(apiData, `/comments?postId=${id}`);
         yield put(getCommentsDataSucceeded(data));
     } catch (error) {
+        console.error(error);
         yield put(getCommentsDataFailed(error));
     }
 }

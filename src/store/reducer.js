@@ -3,7 +3,7 @@ import {
     COMMENTS_DATA_REQUESTED, COMMENTS_DATA_SUCCEEDED, POSTS_DATA_FAILED, POSTS_DATA_REQUESTED,
     POSTS_DATA_SUCCEEDED, SAVE_COMMENT_DATA
 } from "./actions";
-import {fromJS} from "immutable";
+import Immutable, { fromJS, mergeDeep} from "immutable";
 
 const defaultState = fromJS({
     posts: {
@@ -36,9 +36,9 @@ export default function reducer(state = defaultState, action = {}) {
                 .setIn(["comments", "loading"], true);
         }
         case COMMENTS_DATA_SUCCEEDED: {
+            console.log(state.getIn(["comments", "list"]).toOrderedSet());
             return state
-                .setIn(["comments", "list"], fromJS(action.data))
-                //.setIn(["comments", "list"], (state.getIn(["comments", "list"])).mergeDeep(fromJS(action.data)))
+                .setIn(["comments", "list"], (mergeDeep(state.getIn(["comments", "list"]), fromJS(action.data))).toOrderedSet().toList())
                 .setIn(["comments", "loading"], false);
         }
         case COMMENTS_DATA_FAILED: {
