@@ -1,0 +1,16 @@
+h1 {
+    margin: 0 10px 0 10px;
+}
+.App-logo {
+    height: 10vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}

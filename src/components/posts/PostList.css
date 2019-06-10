@@ -1,0 +1,25 @@
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+
+li {
+    background-color: #3a4968;
+    padding: 10px 20px 10px;
+    margin: 10px;
+}
+
+.List-container {
+    display: flex;
+    justify-content: center;
+
+}
+.list {
+    width: 80%;
+}
+.Post-body {
+    color: #cccccc;
+}

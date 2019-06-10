@@ -1,0 +1,11 @@
+.comment {
+    background-color: #4A6771;
+}
+.CommentForm-container {
+    width: 300px;
+    padding: 10px;
+}
+.CommentForm-form {
+    display: flex;
+    flex-direction: column;
+}
