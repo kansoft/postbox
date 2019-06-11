@@ -31,7 +31,7 @@ class Post extends React.Component {
                     <button onClick={() => this.getComments(data.id)} type="button">Pokaż komentarze</button>
                     <button onClick={() => this.addRemoveFavorites(data.id)} type="link"
                             className={data.favorite ? "Post-favorite-button-remove" : "Post-favorite-button-add"}>
-                        {data.favorite ? "Usuń ulubionych" : "Dodaj do ulubionych"}
+                        {data.favorite ? "Usuń z ulubionych" : "Dodaj do ulubionych"}
                     </button>
                 </div>
                 {currentPostId === data.id &&
