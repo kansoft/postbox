@@ -2,7 +2,6 @@ import React from "react";
 import {connect} from "react-redux";
 import Comment from "./Comment";
 import {getCommentsState, getCurrentPostId} from "../../store/selectors";
-import {getCommentsDataRequested} from "../../store/actions";
 import "./CommentList.css";
 import CommentForm from "./CommentForm";
 

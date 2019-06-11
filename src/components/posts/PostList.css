@@ -15,11 +15,39 @@ li {
 .List-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
 }
+
 .list {
     width: 80%;
 }
+
 .Post-body {
     color: #cccccc;
+}
+
+.Post-buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Post-favorite-button-add {
+    background-color: #45894F;
+
+}
+
+.Post-favorite-button-add:hover {
+    background-color: #3e7d45;
+
+}
+.Post-favorite-button-remove {
+    background-color: #ab5344;
+
+}
+
+.Post-favorite-button-remove:hover {
+    background-color: #9a4d40;
+
 }

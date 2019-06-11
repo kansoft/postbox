@@ -11,6 +11,7 @@ function* postsDataRequested() {
         const data = yield call(apiData, `/posts`);
         yield put(getPostsDataSucceeded(data));
     } catch (error) {
+        console.log(error);
         yield put(getPostsDataFailed(error));
     }
 }

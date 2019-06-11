@@ -1,14 +1,22 @@
 import React from "react";
 import {connect} from "react-redux";
 import CommentList from "../comments/CommentList";
-import {getCommentsDataRequested} from "../../store/actions";
+import {getCommentsDataRequested, addToFavorites, removeFromFavorites} from "../../store/actions";
 import {getCurrentPostId} from "../../store/selectors";
 
 class Post extends React.Component {
 
     getComments = (id) => {
-        console.log(id);
         this.props.getCommentsDataRequested(id);
+    };
+
+    addRemoveFavorites = (id) => {
+        if (this.props.data.favorite) {
+            this.props.removeFromFavorites(id)
+        } else {
+            this.props.addToFavorites(id);
+        }
+
     };
 
     render() {
@@ -16,9 +24,16 @@ class Post extends React.Component {
         console.log('Post');
         return (
             <li>
+
                 <p><strong>{data.title}</strong></p>
                 <p className="Post-body">{data.body}</p>
-                <button key={data.id} onClick={() => this.getComments(data.id)} type="button">Pokaż komentarze</button>
+                <div className="Post-buttons-container">
+                    <button onClick={() => this.getComments(data.id)} type="button">Pokaż komentarze</button>
+                    <button onClick={() => this.addRemoveFavorites(data.id)} type="link"
+                            className={data.favorite ? "Post-favorite-button-remove" : "Post-favorite-button-add"}>
+                        {data.favorite ? "Usuń ulubionych" : "Dodaj do ulubionych"}
+                    </button>
+                </div>
                 {currentPostId === data.id &&
                 <CommentList id={data.id}/>
                 }
@@ -33,7 +48,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    getCommentsDataRequested
+    getCommentsDataRequested,
+    addToFavorites,
+    removeFromFavorites
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

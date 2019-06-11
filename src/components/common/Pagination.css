@@ -1,0 +1,22 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.pagination li {
+    cursor: pointer;
+    margin: 7px;
+}
+
+.pagination li:hover {
+    background-color: #4a5d84;
+}
+
+.Pagination-page-active {
+    background-color: #846b33;
+}
+
+.Pagination-page-nonactive {
+
+}

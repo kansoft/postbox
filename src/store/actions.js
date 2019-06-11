@@ -48,3 +48,17 @@ export function saveCommentData(data) {
         type: SAVE_COMMENT_DATA,
     };
 }
+export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export function addToFavorites(id) {
+    return {
+        id,
+        type: ADD_TO_FAVORITES,
+    };
+}
+export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
+export function removeFromFavorites(id) {
+    return {
+        id,
+        type: REMOVE_FROM_FAVORITES,
+    };
+}
