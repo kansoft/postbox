@@ -55,7 +55,7 @@ class CommentForm extends React.Component {
                     <label htmlFor="name">Twoje imię:</label>
                     <input type="text" value={name} id="name" name="name" onChange={this.handleChange} required/>
 
-                    <label htmlFor="email">Twój eamil:</label>
+                    <label htmlFor="email">Twój e-mail:</label>
                     <input type="text" value={email} id="email" name="email" onChange={this.handleChange} required/>
 
                     <label htmlFor="body">Twój komentarz:</label>
