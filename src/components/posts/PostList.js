@@ -3,7 +3,7 @@ import Post from "./Post";
 import {connect} from "react-redux";
 import './PostList.css'
 import {getPostsDataRequested, sortPostsByParam} from "../../store/actions";
-import {getPostState, getPostListState} from "../../store/selectors";
+import {getPostListState} from "../../store/selectors";
 import Pagination from "../pagination/Pagination";
 import Search from "../search/Search";
 import {paginate} from "../../helpers/paginate";
@@ -44,9 +44,9 @@ class PostList extends React.Component {
     };
 
     render() {
-        const {data, posts} = this.props;
+        const {data} = this.props;
         const {postPerPage, currentPage} = this.state;
-        const currentPosts = paginate(posts, postPerPage, currentPage);
+        const currentPosts = paginate(data.list, postPerPage, currentPage);
         return (
             <div className="List-container">
                 {data.loading ? (
@@ -59,14 +59,14 @@ class PostList extends React.Component {
                     </div>
                     <ul className="list">
 
-                        {posts.length > 0 ? (
+                        {data.list.length > 0 ? (
                             <>
                             {currentPosts.map(post => (
                                 <Post key={post.id} data={post}/>
                             ))}
                             </>
                         ):(
-                            <li></li>
+                            <li>Brak postów spełniających kryteria filtrowania.</li>
                         )}
 
 
@@ -75,7 +75,7 @@ class PostList extends React.Component {
                         <Pagination
                             rowsPerPage={postPerPage}
                             onChangePage={(e) => this.handleChangePage(e)}
-                            count={posts.length}
+                            count={data.list.length}
                             page={currentPage}
                         />
                     </ul>
@@ -88,8 +88,7 @@ class PostList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    data: getPostState(state),
-    posts: getPostListState(state),
+    data: getPostListState(state),
 });
 
 const mapDispatchToProps = {
