@@ -1,8 +1,23 @@
 .App {
-  padding: 15px;
+    padding: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+    color: #61dafb;
 }
 
+.Button-link {
+    background:none;
+    color:#61dafb;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+}
+
+.Button-link:hover {
+    text-decoration: underline;
+    background:none;
+    color: #4aa4be;
+    cursor: pointer;
+}

@@ -26,6 +26,7 @@ function makeRequest(requestUrl, method = 'GET', bodyData = {}, headers = {}) {
 
             if (httpResponse.ok) {
                 return data;
+
             }
 
             throw new Error(`Error code - ${httpResponse.status}`);

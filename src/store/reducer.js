@@ -1,16 +1,17 @@
 import {
     ADD_TO_FAVORITES,
     COMMENTS_DATA_FAILED,
-    COMMENTS_DATA_REQUESTED, COMMENTS_DATA_SUCCEEDED, POSTS_DATA_FAILED, POSTS_DATA_REQUESTED,
-    POSTS_DATA_SUCCEEDED, REMOVE_FROM_FAVORITES, SAVE_COMMENT_DATA
+    COMMENTS_DATA_REQUESTED, COMMENTS_DATA_SUCCEEDED, FILTER_POSTS, POSTS_DATA_FAILED, POSTS_DATA_REQUESTED,
+    POSTS_DATA_SUCCEEDED, REMOVE_FROM_FAVORITES, SAVE_COMMENT_DATA, SORT_POSTS_BY_PARAM
 } from "./actions";
-import {fromJS, mergeDeep, update} from "immutable";
+import Immutable, {fromJS, mergeDeep} from "immutable";
 import {randomAuthor} from "../helpers/random";
 
 const defaultState = fromJS({
     posts: {
         loading: false,
         list: [],
+        filters: [],
     },
     comments: {
         loading: false,
@@ -26,7 +27,7 @@ export default function reducer(state = defaultState, action = {}) {
         }
         case POSTS_DATA_SUCCEEDED: {
             return state
-                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item, index) => item.set('author', randomAuthor()))
+                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item, index) => item.set('author', randomAuthor()).set("favorite", false))
                 ));
         }
         case POSTS_DATA_FAILED: {
@@ -38,7 +39,6 @@ export default function reducer(state = defaultState, action = {}) {
                 .setIn(["comments", "loading"], true);
         }
         case COMMENTS_DATA_SUCCEEDED: {
-            console.log(state.getIn(["comments", "list"]).toOrderedSet());
             return state
                 .setIn(["comments", "list"], (mergeDeep(state.getIn(["comments", "list"]), fromJS(action.data))).toOrderedSet().toList())
                 .setIn(["comments", "loading"], false);
@@ -64,6 +64,24 @@ export default function reducer(state = defaultState, action = {}) {
                 }));
                 return list.setIn([index, "favorite"], false);
             }));
+        }
+        case SORT_POSTS_BY_PARAM: {
+            return state.updateIn(["posts", "list"], ((list) => {
+                return action.order === "asc" ? list.sortBy((item) => item.get(action.orderBy)) : list.sortBy((item) => item.get(action.orderBy)).reverse();
+            }));
+        }
+        case FILTER_POSTS: {
+            // const filters = fromJS(action.filters);
+            // return state.updateIn(["posts", "list"], (list) => {
+            //     return list.filter((item) => {
+            //         const isFilter = filters.every((f) => (String(item.get(f.get("key"))).toLocaleLowerCase().includes(f.get("value"))));
+            //         return isFilter;
+            //     })
+            // });
+
+            return state.setIn(["posts", "filters"], fromJS(action.filters));
+
+
         }
         default: {
             return state;

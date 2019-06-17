@@ -24,9 +24,12 @@ class Post extends React.Component {
         console.log('Post');
         return (
             <li>
-
-                <p><strong>{data.title}</strong></p>
-                <p className="Post-body">{data.body}</p>
+                <p><strong>{data.title.split('\u000a').map((item, key) => {
+                    return <span key={key}>{item}<br/></span>
+                })}</strong></p>
+                <p className="Post-body">{data.body.split('\u000a').map((item, key) => {
+                    return <span key={key}>{item}<br/></span>
+                })}</p>
                 <div className="Post-buttons-container">
                     <button onClick={() => this.getComments(data.id)} type="button">Pokaż komentarze</button>
                     <button onClick={() => this.addRemoveFavorites(data.id)} type="link"

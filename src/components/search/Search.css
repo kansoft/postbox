@@ -1,0 +1,14 @@
+.Search-input {
+    padding: 10px;
+}
+
+.Search-form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.Search-input-container {
+    margin-left: 10px;
+}
