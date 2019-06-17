@@ -32,8 +32,6 @@ const mapStateToProps = state => ({
     id: getCurrentPostId(state),
 });
 
-const mapDispatchToProps = {
-    //getCommentsDataRequested
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentList);

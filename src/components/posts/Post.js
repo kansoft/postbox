@@ -21,7 +21,6 @@ class Post extends React.Component {
 
     render() {
         const {data, currentPostId} = this.props;
-        console.log('Post');
         return (
             <li>
                 <p><strong>{data.title.split('\u000a').map((item, key) => {

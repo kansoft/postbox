@@ -27,8 +27,6 @@ class CommentForm extends React.Component {
             this.props.saveCommentData([this.state.formData]);
             this.clearSate();
         });
-
-        console.debug(this.state.formData);
     };
 
     handleChange = (event) => {
@@ -50,7 +48,6 @@ class CommentForm extends React.Component {
     };
 
     render() {
-        console.log("CommentForm");
         const {name, email, body} = this.state.formData;
         return (
             <div className="CommentForm-container">
@@ -71,9 +68,7 @@ class CommentForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    //comments: getComments(state),
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
     saveCommentData

@@ -4,7 +4,7 @@ import {
     COMMENTS_DATA_REQUESTED, COMMENTS_DATA_SUCCEEDED, FILTER_POSTS, POSTS_DATA_FAILED, POSTS_DATA_REQUESTED,
     POSTS_DATA_SUCCEEDED, REMOVE_FROM_FAVORITES, SAVE_COMMENT_DATA, SORT_POSTS_BY_PARAM
 } from "./actions";
-import Immutable, {fromJS, mergeDeep} from "immutable";
+import {fromJS, mergeDeep} from "immutable";
 import {randomAuthor} from "../helpers/random";
 
 const defaultState = fromJS({
@@ -71,17 +71,7 @@ export default function reducer(state = defaultState, action = {}) {
             }));
         }
         case FILTER_POSTS: {
-            // const filters = fromJS(action.filters);
-            // return state.updateIn(["posts", "list"], (list) => {
-            //     return list.filter((item) => {
-            //         const isFilter = filters.every((f) => (String(item.get(f.get("key"))).toLocaleLowerCase().includes(f.get("value"))));
-            //         return isFilter;
-            //     })
-            // });
-
             return state.setIn(["posts", "filters"], fromJS(action.filters));
-
-
         }
         default: {
             return state;

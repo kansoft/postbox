@@ -3,12 +3,11 @@ import Post from "./Post";
 import {connect} from "react-redux";
 import './PostList.css'
 import {getPostsDataRequested, sortPostsByParam} from "../../store/actions";
-//import {createStructuredSelector} from 'reselect';
-import {getPostState, getPostListState, getFilters} from "../../store/selectors";
+import {getPostState, getPostListState} from "../../store/selectors";
 import Pagination from "../pagination/Pagination";
 import Search from "../search/Search";
 import {paginate} from "../../helpers/paginate";
-import SortMenu from "./SortMenu";
+import SortMenu from "../sort/SortMenu";
 
 
 
@@ -34,7 +33,6 @@ class PostList extends React.Component {
         });
     };
     sortData = (id) => {
-        console.log(id);
         this.setState(state =>({
             ...state,
             orderBy: id,
@@ -46,14 +44,13 @@ class PostList extends React.Component {
     };
 
     render() {
-        const {data, filtered} = this.props;
+        const {data, posts} = this.props;
         const {postPerPage, currentPage} = this.state;
-        const currentPosts = paginate(filtered, postPerPage, currentPage);
-        console.log("PostList");
+        const currentPosts = paginate(posts, postPerPage, currentPage);
         return (
             <div className="List-container">
                 {data.loading ? (
-                    <p>ładowanie danych ...</p>
+                    <p>Ładowanie danych ...</p>
                 ) : (
                     <>
                     <div className="PostList-filter-container">
@@ -61,15 +58,24 @@ class PostList extends React.Component {
                         <Search/>
                     </div>
                     <ul className="list">
-                        {currentPosts.map(post => (
-                            <Post key={post.id} data={post}/>
-                        ))}
+
+                        {posts.length > 0 ? (
+                            <>
+                            {currentPosts.map(post => (
+                                <Post key={post.id} data={post}/>
+                            ))}
+                            </>
+                        ):(
+                            <li></li>
+                        )}
+
+
                     </ul>
                     <ul className="pagination">
                         <Pagination
                             rowsPerPage={postPerPage}
                             onChangePage={(e) => this.handleChangePage(e)}
-                            count={filtered.length}
+                            count={posts.length}
                             page={currentPage}
                         />
                     </ul>
@@ -83,7 +89,7 @@ class PostList extends React.Component {
 
 const mapStateToProps = state => ({
     data: getPostState(state),
-    filtered: getPostListState(state),
+    posts: getPostListState(state),
 });
 
 const mapDispatchToProps = {
