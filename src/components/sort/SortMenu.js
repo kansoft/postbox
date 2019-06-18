@@ -2,7 +2,7 @@ import React from "react";
 import "./SortMenu.css";
 import SortMenuItem from "./SortMenuItem";
 
-const options = [{id: "id"}, {id: "title"}, {id: "favorite"}];
+const options = [{id: "Ostatnie"}, {id: "Tytuł"}, {id: "Ulubione"}];
 
 class SortMenu extends React.Component {
     onClickBtn = (id) => {

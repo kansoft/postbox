@@ -5,7 +5,8 @@ import {
     POSTS_DATA_SUCCEEDED, REMOVE_FROM_FAVORITES, SAVE_COMMENT_DATA, SORT_POSTS_BY_PARAM
 } from "./actions";
 import {fromJS, mergeDeep} from "immutable";
-import {randomAuthor} from "../helpers/random";
+import {authors} from "../helpers/constants";
+
 
 const defaultState = fromJS({
     posts: {
@@ -27,7 +28,7 @@ export default function reducer(state = defaultState, action = {}) {
         }
         case POSTS_DATA_SUCCEEDED: {
             return state
-                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item, index) => item.set('author', randomAuthor()).set("favorite", false))
+                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item) => item.set("author", authors[item.get("userId")]).set("favorite", false))
                 ));
         }
         case POSTS_DATA_FAILED: {
