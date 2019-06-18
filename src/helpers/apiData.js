@@ -1,10 +1,10 @@
-function makeRequest(requestUrl, method = 'GET', bodyData = {}, headers = {}) {
+function makeRequest(requestUrl, method = "GET", bodyData = {}, headers = {}) {
     const body = Object.assign({}, bodyData);
     const fetchOptions = {method, headers};
 
-    if (method !== 'GET') {
+    if (method !== "GET") {
         fetchOptions.body = JSON.stringify(body);
-        fetchOptions.headers['Content-Type'] = 'application/json';
+        fetchOptions.headers["Content-Type"] = "application/json";
     }
 
     return fetch(requestUrl, fetchOptions)
@@ -17,7 +17,7 @@ function makeRequest(requestUrl, method = 'GET', bodyData = {}, headers = {}) {
             }
 
             if (httpResponse.status === 423) {
-                throw new Error('423');
+                throw new Error("423");
             }
 
             if (!httpResponse.ok || !data) {
@@ -33,7 +33,7 @@ function makeRequest(requestUrl, method = 'GET', bodyData = {}, headers = {}) {
         });
 }
 
-export function apiData(requestUrl, bodyData = {}, method = 'GET') {
+export function apiData(requestUrl, bodyData = {}, method = "GET") {
     const url = process.env.REACT_APP_API_URL + requestUrl;
 
     return makeRequest(url, method, bodyData);

@@ -1,4 +1,4 @@
-export const POSTS_DATA_REQUESTED = 'POSTS_DATA_REQUESTED';
+export const POSTS_DATA_REQUESTED = "POSTS_DATA_REQUESTED";
 
 export function getPostsDataRequested() {
     return {
@@ -6,7 +6,7 @@ export function getPostsDataRequested() {
     };
 }
 
-export const POSTS_DATA_SUCCEEDED = 'POSTS_DATA_SUCCEEDED';
+export const POSTS_DATA_SUCCEEDED = "POSTS_DATA_SUCCEEDED";
 
 export function getPostsDataSucceeded(data) {
     return {
@@ -15,7 +15,7 @@ export function getPostsDataSucceeded(data) {
     };
 }
 
-export const POSTS_DATA_FAILED = 'POSTS_DATA_FAILED';
+export const POSTS_DATA_FAILED = "POSTS_DATA_FAILED";
 
 export function getPostsDataFailed(e) {
     return {
@@ -25,7 +25,7 @@ export function getPostsDataFailed(e) {
 }
 
 
-export const COMMENTS_DATA_REQUESTED = 'COMMENTS_DATA_REQUESTED';
+export const COMMENTS_DATA_REQUESTED = "COMMENTS_DATA_REQUESTED";
 
 export function getCommentsDataRequested(id) {
     return {
@@ -34,7 +34,7 @@ export function getCommentsDataRequested(id) {
     };
 }
 
-export const COMMENTS_DATA_SUCCEEDED = 'COMMENTS_DATA_SUCCEEDED';
+export const COMMENTS_DATA_SUCCEEDED = "COMMENTS_DATA_SUCCEEDED";
 
 export function getCommentsDataSucceeded(data) {
     return {
@@ -43,7 +43,7 @@ export function getCommentsDataSucceeded(data) {
     };
 }
 
-export const COMMENTS_DATA_FAILED = 'COMMENTS_DATA_FAILED';
+export const COMMENTS_DATA_FAILED = "COMMENTS_DATA_FAILED";
 
 export function getCommentsDataFailed(e) {
     return {
@@ -52,7 +52,7 @@ export function getCommentsDataFailed(e) {
     };
 }
 
-export const SAVE_COMMENT_DATA = 'SAVE_COMMENT_DATA';
+export const SAVE_COMMENT_DATA = "SAVE_COMMENT_DATA";
 
 export function saveCommentData(data) {
     return {
@@ -61,7 +61,7 @@ export function saveCommentData(data) {
     };
 }
 
-export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
 
 export function addToFavorites(id) {
     return {
@@ -70,7 +70,7 @@ export function addToFavorites(id) {
     };
 }
 
-export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
+export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 
 export function removeFromFavorites(id) {
     return {

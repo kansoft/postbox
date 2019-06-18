@@ -1,5 +1,5 @@
 import {all, call, fork, put, takeLatest} from "redux-saga/effects";
-import {apiData} from '../helpers/apiData';
+import {apiData} from "../helpers/apiData";
 import {
     COMMENTS_DATA_REQUESTED,
     getCommentsDataFailed, getCommentsDataSucceeded, getPostsDataFailed, getPostsDataSucceeded,
@@ -8,7 +8,7 @@ import {
 
 function* postsDataRequested() {
     try {
-        const data = yield call(apiData, `/posts`);
+        const data = yield call(apiData, "/posts");
         yield put(getPostsDataSucceeded(data));
     } catch (error) {
         console.log(error);

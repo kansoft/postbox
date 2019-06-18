@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import {connect} from "react-redux";
-import './PostList.css'
+import "./PostList.css"
 import {getPostsDataRequested, sortPostsByParam} from "../../store/actions";
 import {getPostListState} from "../../store/selectors";
 import Pagination from "../pagination/Pagination";

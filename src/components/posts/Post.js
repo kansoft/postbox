@@ -23,10 +23,10 @@ class Post extends React.Component {
         const {data, currentPostId} = this.props;
         return (
             <li>
-                <p><strong>{data.title.split('\u000a').map((item, key) => {
+                <p><strong>{data.title.split("\u000a").map((item, key) => {
                     return <span key={key}>{item}<br/></span>
                 })}</strong></p>
-                <p className="Post-body">{data.body.split('\u000a').map((item, key) => {
+                <p className="Post-body">{data.body.split("\u000a").map((item, key) => {
                     return <span key={key}>{item}<br/></span>
                 })}</p>
                 <div className="Post-buttons-container">
