@@ -28,7 +28,7 @@ export default function reducer(state = defaultState, action = {}) {
         }
         case POSTS_DATA_SUCCEEDED: {
             return state
-                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item) => item.set("author", authors[item.get("userId")]).set("favorite", false))
+                .setIn(["posts", "list"], fromJS(action.data).update((list) => list.map((item) => item.set("author", authors[item.get("userId")-1]).set("favorite", false))
                 ));
         }
         case POSTS_DATA_FAILED: {
