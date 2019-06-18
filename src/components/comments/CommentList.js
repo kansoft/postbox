@@ -13,7 +13,7 @@ class CommentList extends React.Component {
         return (
             <React.Fragment>
                 {data.loading ? (
-                    <p>ładowanie danych ...</p>
+                    <p>Ładowanie danych ...</p>
                 ) : (
                     <ul>
                         {data.list.filter(comment => comment.postId === id).map(comment => (

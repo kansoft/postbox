@@ -25,7 +25,7 @@ class CommentForm extends React.Component {
             }
         ), () => {
             this.props.saveCommentData([this.state.formData]);
-            this.clearSate();
+            this.clearState();
         });
     };
 
@@ -35,7 +35,7 @@ class CommentForm extends React.Component {
         this.setState({formData});
     };
 
-    clearSate = () => {
+    clearState = () => {
         this.setState({
             formData: {
                 id: 0,
