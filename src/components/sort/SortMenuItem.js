@@ -7,11 +7,11 @@ class SortMenuItem extends React.Component {
     };
 
     render() {
-        const {id, order, orderBy} = this.props;
+        const {id, label, order, orderBy} = this.props;
         return (
             <div className="SortMenu-elem">
                 <div className="SortMenu-sort">
-                    <button className="Button-link" onClick={this.onClickBtn}><span>{id}</span></button>
+                    <button className="Button-link" onClick={this.onClickBtn}><span>{label}</span></button>
                     {orderBy === id &&
                     <span className="Sort-arrow">{order === "asc" ? "\u2191" : "\u2193"}</span>}</div>
                 <div>|</div>

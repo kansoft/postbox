@@ -2,7 +2,7 @@ import React from "react";
 import "./SortMenu.css";
 import SortMenuItem from "./SortMenuItem";
 
-const options = [{id: "Ostatnie"}, {id: "Tytuł"}, {id: "Ulubione"}];
+const options = [{id: "id", label: "Ostatnie"}, {id: "title", label: "Tytuł"}, {id: "favorite", label: "Ulubione"}];
 
 class SortMenu extends React.Component {
     onClickBtn = (id) => {
@@ -15,7 +15,7 @@ class SortMenu extends React.Component {
             <div className="SortMenu-sort-container">
                 <p>Sortuj wg:</p>
                 {options.map(option => (
-                    <SortMenuItem key={option.id} id={option.id} onClick={this.onClickBtn} order={order}
+                    <SortMenuItem key={option.id} id={option.id} label={option.label} onClick={this.onClickBtn} order={order}
                                   orderBy={orderBy}/>
                 ))}
             </div>
